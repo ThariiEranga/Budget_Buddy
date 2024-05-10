@@ -1,6 +1,8 @@
 package com.example.budgetbuddy
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,10 +13,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        val AddBtn : Button = findViewById(R.id.AddBtn)
+        val TotBtn : Button = findViewById(R.id.TotBtn)
+
+
+        AddBtn.setOnClickListener{
+            val intent = Intent(this, AddExpenses::class.java)
+            startActivity(intent)
+            finish()
         }
+
     }
 }

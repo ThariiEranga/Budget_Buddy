@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">BudgetBuddy</string>
+    <string name="app_name">Budget Buddy</string>
+    <string name="start">Check Expences</string>
+    <string name="homequote">Decod Your Money Mysteries</string>
+    <string name="Date">Date</string>
+    <string name="addexpense">Add Expense</string>
+    <string name="category">Category</string>
+    <string name="amount">Amount</string>
+    <string name="list">Expenses List</string>
+    <string name="Totbtn">Total Expenses</string>
+    <string name="rs">Rs.</string>
 </resources>
