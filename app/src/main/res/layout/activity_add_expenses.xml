@@ -9,7 +9,7 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="96dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:text="@string/addexpense"
         android:textAlignment="center"
         android:textColor="@color/Btn"
@@ -21,11 +21,9 @@
         android:layout_width="match_parent"
         android:layout_height="78dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
-        android:ems="10"
-        android:hint="@string/Date"
-        android:inputType="date" />
+        android:hint="@string/Date" />
 
     <EditText
         android:id="@+id/editTextCategory"
@@ -63,11 +61,21 @@
         android:id="@+id/buttonAddExpense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="40dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="20dp"
         android:backgroundTint="@color/Btn"
         android:text="@string/addexpense"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/backbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/back"
+        android:text="@string/back"
         android:textSize="20sp"
         android:textStyle="bold" />
 
