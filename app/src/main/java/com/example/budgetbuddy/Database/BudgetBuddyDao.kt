@@ -21,4 +21,7 @@ interface BudgetBuddyDao {
     @Query("SELECT * FROM BudgetBuddy")
     fun getAllBudgetBuddyItems():List<BudgetBuddy>
 
+    @Query("SELECT * FROM BudgetBuddy WHERE Date = :date")
+    suspend fun getExpensesByDate(date: String): List<BudgetBuddy>
+
 }
