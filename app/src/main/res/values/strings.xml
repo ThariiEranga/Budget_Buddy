@@ -13,4 +13,5 @@
     <string name="update">Update</string>
     <string name="back">Back To Expenses</string>
     <string name="Updateex">Update Expense</string>
+    <string name="searchdate">Search Date</string>
 </resources>

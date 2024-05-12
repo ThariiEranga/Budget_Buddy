@@ -1,13 +1,14 @@
 package com.example.budgetbuddy
 
 import android.content.Intent
+import android.media.Image
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.budgetbuddy.Database.BudgetBuddyDB
@@ -25,6 +26,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+        val searchdate:EditText = findViewById(R.id.searchDate)
+        val SearchBtn:ImageButton = findViewById(R.id.SearchBtn)
+        val CancelBtn:ImageButton = findViewById(R.id.CancelBtn)
 
         val recyclerView: RecyclerView = findViewById(R.id.rvExpenses)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -53,6 +58,18 @@ class MainActivity : AppCompatActivity() {
         totBtn.setOnClickListener {
             showTotalExpensesDialog()
         }
+        SearchBtn.setOnClickListener {
+            val searchDate = searchdate.text.toString()
+            searchExpenses(searchDate)
+        }
+
+        CancelBtn.setOnClickListener {
+            // Clear the search date field
+            searchdate.text.clear()
+            // Reload all expenses
+            searchExpenses("")
+        }
+
     }
     private fun showTotalExpensesDialog() {
         val totalAmount = calculateTotalExpenses()
@@ -74,5 +91,18 @@ class MainActivity : AppCompatActivity() {
             total += expense.Amount.toDouble()
         }
         return total.toString()
+    }
+
+    private fun searchExpenses(date: String) {
+        GlobalScope.launch {
+            val data = if (date.isNotEmpty()) {
+                budgetBuddyRepository.getExpensesByDate(date)
+            } else {
+                budgetBuddyRepository.getAllBudgetBuddyItems()
+            }
+            withContext(Dispatchers.Main) {
+                adapter.updateData(data)
+            }
+        }
     }
 }

@@ -12,6 +12,9 @@ class BudgetBuddyRepository(
 
     fun getAllBudgetBuddyItems(): List<BudgetBuddy> =
         db.getBudgetBuddyDao().getAllBudgetBuddyItems()
+
+    suspend fun getExpensesByDate(date: String): List<BudgetBuddy> =
+        db.getBudgetBuddyDao().getExpensesByDate(date)
     companion object {
         @Volatile
         private var INSTANCE: BudgetBuddyRepository? = null
